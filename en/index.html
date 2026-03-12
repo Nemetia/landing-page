@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Nemetia Digital Solutions</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"><link rel="stylesheet" href="/src/styles/global.css"></head> <body>  <div class="site-shell"> <header class="site-header" data-site-header> <div class="container site-header-content"> <div class="site-brand"> <div class="site-brand-icon"> <img src="/images/nemetia-header-logo.png" alt="Nemetia header"> </div> <a href="/en" class="site-brand-name">
+Nemetia Digital Solutions
+</a> </div> <nav class="site-navigation" aria-label="Main navigation"> <a class="site-navigation-link" href="#home" data-section-link="home"> Home </a> <a class="site-navigation-link" href="#services" data-section-link="services"> Services </a> <a class="site-navigation-link" href="#why-us" data-section-link="why-us"> Why us </a> <a class="site-navigation-link" href="#contact" data-section-link="contact"> Contact </a> </nav> <div class="language-selector" data-language-selector> <button type="button" class="language-selector-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="language-selector-menu" data-language-selector-trigger> <span class="material-symbols-outlined language-selector-trigger-icon">
+language
+</span> <span class="language-selector-trigger-label"> EN </span> <span class="material-symbols-outlined language-selector-trigger-chevron">
+expand_more
+</span> </button> <div id="language-selector-menu" class="language-selector-menu" hidden data-language-selector-menu> <a href="/" class="language-selector-option " lang="es"> <span class="language-selector-option-label"> Español </span>  </a><a href="/en" class="language-selector-option language-selector-option--active" lang="en"> <span class="language-selector-option-label"> English </span> <span class="material-symbols-outlined language-selector-option-check">
+check
+</span> </a> </div> </div> <script type="module">const i=document.querySelectorAll("[data-language-selector]");i.forEach(n=>{const e=n.querySelector("[data-language-selector-trigger]"),a=n.querySelector("[data-language-selector-menu]");if(!(e instanceof HTMLButtonElement)||!(a instanceof HTMLElement))return;const r=()=>{e.setAttribute("aria-expanded","false"),a.hidden=!0},c=()=>{e.setAttribute("aria-expanded","true"),a.hidden=!1};e.addEventListener("click",()=>{if(e.getAttribute("aria-expanded")==="true"){r();return}c()}),document.addEventListener("click",t=>{const d=t.target;d instanceof Node&&(n.contains(d)||r())}),document.addEventListener("keydown",t=>{t.key==="Escape"&&r()})});</script> </div> </header> <script>
+  (() => {
+    const initializeHeader = () => {
+      const siteHeader = document.querySelector("[data-site-header]");
+      if (!(siteHeader instanceof HTMLElement)) return;
+
+      const sectionLinks = Array.from(
+        document.querySelectorAll("[data-section-link]")
+      ).filter((element) => element instanceof HTMLAnchorElement);
+
+      const observedSections = Array.from(
+        document.querySelectorAll("section[id]")
+      ).filter((element) => element instanceof HTMLElement);
+
+      if (sectionLinks.length === 0 || observedSections.length === 0) return;
+
+      const setActiveSectionLink = (sectionId) => {
+        sectionLinks.forEach((sectionLink) => {
+          const isActive = sectionLink.dataset.sectionLink === sectionId;
+          sectionLink.classList.toggle("site-navigation-link--active", isActive);
+
+          if (isActive) {
+            sectionLink.setAttribute("aria-current", "page");
+          } else {
+            sectionLink.removeAttribute("aria-current");
+          }
+        });
+      };
+
+      const updateHeaderScrolledState = () => {
+        const isScrolled = window.scrollY > 16;
+        siteHeader.classList.toggle("site-header--scrolled", isScrolled);
+      };
+
+      const updateActiveSectionFromScroll = () => {
+        const headerHeight = siteHeader.offsetHeight;
+        const scrollReference = window.scrollY + headerHeight + 120;
+        const nearPageBottom =
+          window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24;
+
+        if (nearPageBottom) {
+          setActiveSectionLink(observedSections[observedSections.length - 1]?.id ?? "contact");
+          return;
+        }
+
+        let activeSectionId = observedSections[0]?.id ?? "home";
+
+        for (const section of observedSections) {
+          if (section.offsetTop <= scrollReference) {
+            activeSectionId = section.id;
+          }
+        }
+
+        setActiveSectionLink(activeSectionId);
+      };
+
+      const handleScroll = () => {
+        updateHeaderScrolledState();
+        updateActiveSectionFromScroll();
+      };
+
+      handleScroll();
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener("resize", handleScroll);
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeHeader, { once: true });
+    } else {
+      initializeHeader();
+    }
+  })();
+</script> <section id="home" class="hero-section hero-gradient"> <div class="hero-overlay"></div> <div class="container hero-section-content"> <div class="hero-badge"> <img src="/images/nemetia-wisdom-icon.png" alt="Nemetia wisdom"> <span>Digital wisdom for modern growth</span> </div> <h1 class="hero-title"> <span class="hero-title-line"> Nemetia: <span class="hero-title-highlight"> Growth </span> </span> <span class="hero-title-line"> Through Knowledge </span> </h1> <p class="hero-description"> Custom digital solutions for medium-sized enterprises, rooted in Celtic wisdom and modern tech. </p> <div class="hero-actions"> <a href="#contact" class="button button-primary hero-primary-button"> Contact us </a> <a href="#services" class="button button-secondary hero-secondary-button"> View services </a> </div> </div> <div class="hero-scroll-indicator" aria-hidden="true"> <span class="material-symbols-outlined">expand_more</span> </div> </section> <section id="services" class="services-section"> <div class="container-wide services-container"> <div class="section-heading"> <h2 class="section-title"> Branching Into Every Need </h2> <p class="section-description"> Our specialized branches of expertise are designed to nourish every aspect of your business&#39;s digital ecosystem. </p> </div> <div class="services-grid"> <article class="service-card glow-border"> <div class="service-card-icon-wrapper"> <span class="material-symbols-outlined service-card-icon"> hub </span> </div> <div class="service-card-content"> <h3 class="service-card-title"> Custom Software </h3> <p class="service-card-description"> Tailored applications built with Celtic precision, designed to handle the unique complexities of your enterprise operations. </p> </div> <a class="service-card-link" href="#"> Learn more <span class="material-symbols-outlined service-card-link-icon">
+arrow_forward
+</span> </a> </article><article class="service-card glow-border"> <div class="service-card-icon-wrapper"> <span class="material-symbols-outlined service-card-icon"> psychology </span> </div> <div class="service-card-content"> <h3 class="service-card-title"> Digital Strategy </h3> <p class="service-card-description"> Strategic roadmaps to navigate the digital landscape, ensuring your growth is sustainable and strategically sound. </p> </div> <a class="service-card-link" href="#"> Learn more <span class="material-symbols-outlined service-card-link-icon">
+arrow_forward
+</span> </a> </article><article class="service-card glow-border"> <div class="service-card-icon-wrapper"> <span class="material-symbols-outlined service-card-icon"> account_tree </span> </div> <div class="service-card-content"> <h3 class="service-card-title"> Scalable Infrastructure </h3> <p class="service-card-description"> Robust foundations for sustainable business growth, built to withstand the elements of global market shifts. </p> </div> <a class="service-card-link" href="#"> Learn more <span class="material-symbols-outlined service-card-link-icon">
+arrow_forward
+</span> </a> </article> </div> </div> </section> <section id="why-us" class="why-us-section"> <div class="container why-us-container"> <div class="why-us-layout"> <div class="why-us-content"> <h2 class="why-us-title"> Deep Roots, Global Reach </h2> <p class="why-us-description"> We bring centuries of wisdom to modern technology, ensuring your medium-sized enterprise has the stability to grow globally. Our approach isn&#39;t just about code; it&#39;s about cultivation. </p> <div class="why-us-highlights"> <div class="why-us-highlight"> <span class="material-symbols-outlined why-us-highlight-icon">
+check_circle
+</span> <div class="why-us-highlight-content"> <h3 class="why-us-highlight-title"> Tailored Ecosystems </h3> <p class="why-us-highlight-description"> Solutions designed specifically for your unique business environment. </p> </div> </div><div class="why-us-highlight"> <span class="material-symbols-outlined why-us-highlight-icon">
+check_circle
+</span> <div class="why-us-highlight-content"> <h3 class="why-us-highlight-title"> Future-Proof Resilience </h3> <p class="why-us-highlight-description"> Infrastructure that scales and adapts as your reach expands. </p> </div> </div><div class="why-us-highlight"> <span class="material-symbols-outlined why-us-highlight-icon">
+check_circle
+</span> <div class="why-us-highlight-content"> <h3 class="why-us-highlight-title"> Proven Lineage </h3> <p class="why-us-highlight-description"> Deep industry knowledge rooted in decades of digital innovation. </p> </div> </div> </div> </div> <div class="why-us-visual"> <div class="why-us-image-frame"> <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKBJ6E7Z0vQARF0TjhDWgqnCBw3rBPdNmVFtOtHPKx2ZygKSUEuv1MdLjlSovqetdqQ0JkcFuiCsXHL7nqFjF1WMZuEpr8Kuvv-YSH15jQAS6gL8TL5nqUFpFOTkK2QK5TZLzn5sSCHm09y5p5lziQ363hHIU47V9mI9qe40i6DNiV69gdoDl6AMta3YspTa3Xk7yWSAnjbxhnm3bC0BKnkPo7adEOTvIFqwmM09OpoCLFolS8dXU83V85-thD8bCi7QPGg8YWrhPT" alt="Sunlight filtering through a deep green ancient forest" class="why-us-image"> <div class="why-us-image-overlay"></div> </div> <div class="why-us-stats-card"> <div class="why-us-stats-content"> <span class="why-us-stats-value"> 10+ </span> <span class="why-us-stats-label"> Years Experience </span> </div> </div> </div> </div> </div> </section> <section id="contact" class="contact-section"> <div class="contact-background-texture"></div> <div class="container contact-container"> <div class="contact-heading"> <h2 class="contact-title"> Enter the Grove </h2> <p class="contact-description"> Ready to plant the seeds of your digital future? Let&#39;s connect and grow together. </p> </div> <form class="contact-form-card"> <div class="contact-form-grid"> <div class="contact-form-field"> <label for="name" class="contact-form-label"> Name </label> <input id="name" name="name" type="text" class="contact-form-input" placeholder="Oakley Green"> </div> <div class="contact-form-field"> <label for="email" class="contact-form-label"> Email </label> <input id="email" name="email" type="email" class="contact-form-input" placeholder="hello@nemetia.com"> </div> </div> <div class="contact-form-field"> <label for="message" class="contact-form-label"> Your Vision </label> <textarea id="message" name="message" class="contact-form-textarea" placeholder="Describe the idea you want to plant..." rows="4"></textarea> </div> <button type="button" class="button button-primary contact-submit-button"> Sow Your Idea </button> </form> </div> </section> <footer class="site-footer"> <div class="container site-footer-content"> <div class="site-footer-brand"> <img src="/images/nemetia-footer-logo.png" alt="Nemetia footer"> <span class="site-footer-brand-name">Nemetia Digital Solutions</span> </div> <nav class="site-footer-links" aria-label="Footer navigation"> <a href="#" class="site-footer-link"> Privacy Policy </a> <a href="#" class="site-footer-link"> Terms of Growth </a> <a href="#" class="site-footer-link"> LinkedIn </a> </nav> <p class="site-footer-copyright"> © 2026 Nemetia Digital Solutions. All roots reserved. </p> </div> </footer> </div>  </body></html>
