@@ -1,0 +1,33 @@
+---
+import type { Language } from "../../i18n"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import Header from "../layout/Header.astro"
+import Footer from "../layout/Footer.astro"
+import HeroSection from "../sections/HeroSection.astro"
+import ServicesSection from "../sections/ServicesSection.astro"
+import WhyUsSection from "../sections/WhyUsSection.astro"
+import ContactSection from "../sections/ContactSection.astro"
+import { getTranslations } from "../../i18n"
+
+interface Props {
+  currentLanguage: Language
+}
+
+const { currentLanguage } = Astro.props
+const translations = getTranslations(currentLanguage)
+---
+
+<BaseLayout title={translations.site.title} lang={currentLanguage}>
+  <div class="site-shell">
+    <Header
+      translations={translations}
+      currentLanguage={currentLanguage}
+    />
+
+    <HeroSection translations={translations} />
+    <ServicesSection translations={translations} />
+    <WhyUsSection translations={translations} />
+    <ContactSection translations={translations} />
+    <Footer translations={translations} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,12 @@
+:root {
+  --color-primary: #11d432;
+  --color-background-light: #f6f8f6;
+  --color-background-dark: #0a1f1c;
+  --color-forest-muted: #162d29;
+  --color-forest-accent: #1a3d38;
+
+  --color-white: #ffffff;
+  --color-text: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-muted-soft: #cbd5e1;
+}

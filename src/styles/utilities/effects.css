@@ -1,0 +1,8 @@
+.hero-gradient {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(17, 212, 50, 0.1) 0%, rgba(10, 31, 28, 1) 100%);
+}
+
+.glow-border:hover {
+  box-shadow: 0 0 15px rgba(17, 212, 50, 0.3);
+}

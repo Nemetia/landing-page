@@ -1,0 +1,119 @@
+.hero-section {
+  position: relative;
+  display: flex;
+  min-height: 85vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.16;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(17, 212, 50, 0.18), transparent 28%),
+    radial-gradient(circle at 80% 40%, rgba(17, 212, 50, 0.12), transparent 26%),
+    radial-gradient(circle at 50% 80%, rgba(17, 212, 50, 0.08), transparent 24%);
+  mix-blend-mode: overlay;
+}
+
+.hero-section-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: 78rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(17, 212, 50, 0.28);
+  border-radius: 9999px;
+  background-color: rgba(22, 45, 41, 0.72);
+  padding: 0.65rem 1rem;
+  color: #d1fae5;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.hero-badge-icon {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+.hero-title {
+  margin: 0;
+  max-width: 24ch;
+  color: var(--color-white);
+  font-size: clamp(3rem, 7vw, 5.75rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.hero-title-line {
+  display: block;
+}
+
+.hero-title-highlight {
+  color: var(--color-primary);
+}
+
+.hero-description {
+  max-width: 42rem;
+  margin: 1.75rem auto 0;
+  color: #94a3b8;
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+.hero-primary-button,
+.hero-secondary-button {
+  min-height: 3.5rem;
+  padding: 0 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #64748b;
+  animation: hero-bounce 1.8s infinite;
+}
+
+.hero-scroll-indicator .material-symbols-outlined {
+  font-size: 2rem;
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 78vh;
+    padding: 4.5rem 1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,85 @@
+---
+import type { Translations } from "../../i18n/types"
+
+interface Props {
+  translations: Translations
+}
+
+const { translations } = Astro.props
+
+const whyUsHighlights = [
+  {
+    title: translations.whyUs.tailoredSolutions.title,
+    description: translations.whyUs.tailoredSolutions.description,
+  },
+  {
+    title: translations.whyUs.sustainableGrowth.title,
+    description: translations.whyUs.sustainableGrowth.description,
+  },
+  {
+    title: translations.whyUs.closeSupport.title,
+    description: translations.whyUs.closeSupport.description,
+  },
+]
+---
+
+<section id="why-us" class="why-us-section">
+  <div class="container why-us-container">
+    <div class="why-us-layout">
+      <div class="why-us-content">
+        <h2 class="why-us-title">
+          {translations.whyUs.sectionTitle}
+        </h2>
+
+        <p class="why-us-description">
+          {translations.whyUs.sectionDescription}
+        </p>
+
+        <div class="why-us-highlights">
+          {
+            whyUsHighlights.map((whyUsHighlight) => (
+              <div class="why-us-highlight">
+                <span class="material-symbols-outlined why-us-highlight-icon">
+                  check_circle
+                </span>
+
+                <div class="why-us-highlight-content">
+                  <h3 class="why-us-highlight-title">
+                    {whyUsHighlight.title}
+                  </h3>
+
+                  <p class="why-us-highlight-description">
+                    {whyUsHighlight.description}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="why-us-visual">
+        <div class="why-us-image-frame">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKBJ6E7Z0vQARF0TjhDWgqnCBw3rBPdNmVFtOtHPKx2ZygKSUEuv1MdLjlSovqetdqQ0JkcFuiCsXHL7nqFjF1WMZuEpr8Kuvv-YSH15jQAS6gL8TL5nqUFpFOTkK2QK5TZLzn5sSCHm09y5p5lziQ363hHIU47V9mI9qe40i6DNiV69gdoDl6AMta3YspTa3Xk7yWSAnjbxhnm3bC0BKnkPo7adEOTvIFqwmM09OpoCLFolS8dXU83V85-thD8bCi7QPGg8YWrhPT"
+            alt={translations.whyUs.imageAlt}
+            class="why-us-image"
+          />
+          <div class="why-us-image-overlay"></div>
+        </div>
+
+        <div class="why-us-stats-card">
+          <div class="why-us-stats-content">
+            <span class="why-us-stats-value">
+              {translations.whyUs.statsValue}
+            </span>
+
+            <span class="why-us-stats-label">
+              {translations.whyUs.statsLabel}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

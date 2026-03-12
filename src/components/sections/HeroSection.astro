@@ -1,0 +1,51 @@
+---
+import type { Translations } from "../../i18n/types"
+
+interface Props {
+  translations: Translations
+}
+
+const { translations } = Astro.props
+---
+
+<section id="home" class="hero-section hero-gradient">
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-section-content">
+    <div class="hero-badge">
+      <span class="material-symbols-outlined hero-badge-icon">auto_awesome</span>
+      <span>{translations.hero.badge}</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="hero-title-line">
+        {translations.hero.titlePrefix}
+        <span class="hero-title-highlight">
+          {translations.hero.titleHighlight}
+        </span>
+      </span>
+
+      <span class="hero-title-line">
+        {translations.hero.titleSuffix}
+      </span>
+    </h1>
+
+    <p class="hero-description">
+      {translations.hero.description}
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="button button-primary hero-primary-button">
+        {translations.hero.primaryCta}
+      </a>
+
+      <a href="#services" class="button button-secondary hero-secondary-button">
+        {translations.hero.secondaryCta}
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-indicator" aria-hidden="true">
+    <span class="material-symbols-outlined">expand_more</span>
+  </div>
+</section>

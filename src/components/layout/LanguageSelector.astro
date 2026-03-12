@@ -1,0 +1,126 @@
+---
+import type { Language } from "../../i18n"
+import type { LanguageOption } from "../../i18n/config"
+
+interface Props {
+  currentLanguage: Language
+  availableLanguages: LanguageOption[]
+}
+
+const { currentLanguage, availableLanguages } = Astro.props
+
+const currentLanguageOption =
+  availableLanguages.find(
+    (languageOption) => languageOption.code === currentLanguage
+  ) ?? availableLanguages[0]
+
+const selectorId = "language-selector-menu"
+---
+
+<div class="language-selector" data-language-selector>
+  <button
+    type="button"
+    class="language-selector-trigger"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-controls={selectorId}
+    data-language-selector-trigger
+  >
+    <span class="material-symbols-outlined language-selector-trigger-icon">
+      language
+    </span>
+
+    <span class="language-selector-trigger-label">
+      {currentLanguageOption.shortLabel}
+    </span>
+
+    <span class="material-symbols-outlined language-selector-trigger-chevron">
+      expand_more
+    </span>
+  </button>
+
+  <div
+    id={selectorId}
+    class="language-selector-menu"
+    hidden
+    data-language-selector-menu
+  >
+    {
+      availableLanguages.map((languageOption) => {
+        const isCurrentLanguage = languageOption.code === currentLanguage
+
+        return (
+          <a
+            href={languageOption.path}
+            class={`language-selector-option ${isCurrentLanguage ? "language-selector-option--active" : ""}`}
+            lang={languageOption.code}
+          >
+            <span class="language-selector-option-label">
+              {languageOption.label}
+            </span>
+
+            {
+              isCurrentLanguage && (
+                <span class="material-symbols-outlined language-selector-option-check">
+                  check
+                </span>
+              )
+            }
+          </a>
+        )
+      })
+    }
+  </div>
+</div>
+
+<script>
+  const languageSelectors = document.querySelectorAll("[data-language-selector]")
+
+  languageSelectors.forEach((languageSelector) => {
+    const trigger = languageSelector.querySelector("[data-language-selector-trigger]")
+    const menu = languageSelector.querySelector("[data-language-selector-menu]")
+
+    if (!(trigger instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) {
+      return
+    }
+
+    const closeMenu = () => {
+      trigger.setAttribute("aria-expanded", "false")
+      menu.hidden = true
+    }
+
+    const openMenu = () => {
+      trigger.setAttribute("aria-expanded", "true")
+      menu.hidden = false
+    }
+
+    trigger.addEventListener("click", () => {
+      const isExpanded = trigger.getAttribute("aria-expanded") === "true"
+
+      if (isExpanded) {
+        closeMenu()
+        return
+      }
+
+      openMenu()
+    })
+
+    document.addEventListener("click", (event) => {
+      const target = event.target
+
+      if (!(target instanceof Node)) {
+        return
+      }
+
+      if (!languageSelector.contains(target)) {
+        closeMenu()
+      }
+    })
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu()
+      }
+    })
+  })
+</script>

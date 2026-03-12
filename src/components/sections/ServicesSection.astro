@@ -1,0 +1,72 @@
+---
+import type { Translations } from "../../i18n/types"
+
+interface Props {
+  translations: Translations
+}
+
+const { translations } = Astro.props
+
+const serviceCards = [
+  {
+    title: translations.services.software.title,
+    description: translations.services.software.description,
+    icon: translations.services.software.icon,
+  },
+  {
+    title: translations.services.strategy.title,
+    description: translations.services.strategy.description,
+    icon: translations.services.strategy.icon,
+  },
+  {
+    title: translations.services.infrastructure.title,
+    description: translations.services.infrastructure.description,
+    icon: translations.services.infrastructure.icon,
+  },
+]
+---
+
+<section id="services" class="services-section">
+  <div class="container-wide services-container">
+    <div class="section-heading">
+      <h2 class="section-title">
+        {translations.services.sectionTitle}
+      </h2>
+
+      <p class="section-description">
+        {translations.services.sectionDescription}
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {
+        serviceCards.map((serviceCard) => (
+          <article class="service-card glow-border">
+            <div class="service-card-icon-wrapper">
+              <span class="material-symbols-outlined service-card-icon">
+                {serviceCard.icon}
+              </span>
+            </div>
+
+            <div class="service-card-content">
+              <h3 class="service-card-title">
+                {serviceCard.title}
+              </h3>
+
+              <p class="service-card-description">
+                {serviceCard.description}
+              </p>
+            </div>
+
+            <a class="service-card-link" href="#">
+              {translations.services.learnMore}
+              <span class="material-symbols-outlined service-card-link-icon">
+                arrow_forward
+              </span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

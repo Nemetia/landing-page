@@ -1,0 +1,127 @@
+---
+import type { Language } from "../../i18n"
+import type { Translations } from "../../i18n/types"
+import { availableLanguages } from "../../i18n/config"
+import LanguageSelector from "./LanguageSelector.astro"
+
+interface Props {
+  translations: Translations
+  currentLanguage: Language
+}
+
+const { translations, currentLanguage } = Astro.props
+
+const homePath = currentLanguage === "es" ? "/" : "/en"
+---
+
+<header class="site-header" data-site-header>
+  <div class="container site-header-content">
+    <div class="site-brand">
+      <div class="site-brand-icon">
+        <span class="material-symbols-outlined">nature_people</span>
+      </div>
+
+      <a href={homePath} class="site-brand-name">
+        Nemeton Digital Solutions
+      </a>
+    </div>
+
+    <nav class="site-navigation" aria-label="Main navigation">
+      <a class="site-navigation-link" href="#home" data-section-link="home">
+        {translations.nav.home}
+      </a>
+
+      <a class="site-navigation-link" href="#services" data-section-link="services">
+        {translations.nav.services}
+      </a>
+
+      <a class="site-navigation-link" href="#why-us" data-section-link="why-us">
+        {translations.nav.whyUs}
+      </a>
+
+      <a class="site-navigation-link" href="#contact" data-section-link="contact">
+        {translations.nav.contact}
+      </a>
+    </nav>
+
+    <LanguageSelector
+      currentLanguage={currentLanguage}
+      availableLanguages={availableLanguages}
+    />
+  </div>
+</header>
+
+<script is:inline>
+  (() => {
+    const initializeHeader = () => {
+      const siteHeader = document.querySelector("[data-site-header]");
+      if (!(siteHeader instanceof HTMLElement)) return;
+
+      const sectionLinks = Array.from(
+        document.querySelectorAll("[data-section-link]")
+      ).filter((element) => element instanceof HTMLAnchorElement);
+
+      const observedSections = Array.from(
+        document.querySelectorAll("section[id]")
+      ).filter((element) => element instanceof HTMLElement);
+
+      if (sectionLinks.length === 0 || observedSections.length === 0) return;
+
+      const setActiveSectionLink = (sectionId) => {
+        sectionLinks.forEach((sectionLink) => {
+          const isActive = sectionLink.dataset.sectionLink === sectionId;
+          sectionLink.classList.toggle("site-navigation-link--active", isActive);
+
+          if (isActive) {
+            sectionLink.setAttribute("aria-current", "page");
+          } else {
+            sectionLink.removeAttribute("aria-current");
+          }
+        });
+      };
+
+      const updateHeaderScrolledState = () => {
+        const isScrolled = window.scrollY > 16;
+        siteHeader.classList.toggle("site-header--scrolled", isScrolled);
+      };
+
+      const updateActiveSectionFromScroll = () => {
+        const headerHeight = siteHeader.offsetHeight;
+        const scrollReference = window.scrollY + headerHeight + 120;
+        const nearPageBottom =
+          window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24;
+
+        if (nearPageBottom) {
+          setActiveSectionLink(observedSections[observedSections.length - 1]?.id ?? "contact");
+          return;
+        }
+
+        let activeSectionId = observedSections[0]?.id ?? "home";
+
+        for (const section of observedSections) {
+          if (section.offsetTop <= scrollReference) {
+            activeSectionId = section.id;
+          }
+        }
+
+        setActiveSectionLink(activeSectionId);
+      };
+
+      const handleScroll = () => {
+        updateHeaderScrolledState();
+        updateActiveSectionFromScroll();
+      };
+
+      handleScroll();
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener("resize", handleScroll);
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeHeader, { once: true });
+    } else {
+      initializeHeader();
+    }
+  })();
+</script>

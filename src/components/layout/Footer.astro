@@ -1,0 +1,36 @@
+---
+import type { Translations } from "../../i18n/types"
+
+interface Props {
+  translations: Translations
+}
+
+const { translations } = Astro.props
+---
+
+<footer class="site-footer">
+  <div class="container site-footer-content">
+    <div class="site-footer-brand">
+      <span class="material-symbols-outlined site-footer-brand-icon">nature</span>
+      <span class="site-footer-brand-name">Nemetia Digital</span>
+    </div>
+
+    <nav class="site-footer-links" aria-label="Footer navigation">
+      <a href="#" class="site-footer-link">
+        {translations.footer.privacyPolicy}
+      </a>
+
+      <a href="#" class="site-footer-link">
+        {translations.footer.termsAndConditions}
+      </a>
+
+      <a href="#" class="site-footer-link">
+        {translations.footer.socialLink}
+      </a>
+    </nav>
+
+    <p class="site-footer-copyright">
+      {translations.footer.copyright}
+    </p>
+  </div>
+</footer>

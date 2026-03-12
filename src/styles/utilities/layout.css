@@ -1,0 +1,40 @@
+.site-shell {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  overflow-x: clip;
+}
+
+.container {
+  width: calc(100% - 4rem);
+  max-width: 2200px;
+  margin: 0 auto;
+}
+
+.container-wide {
+  width: calc(100% - 2rem);
+  max-width: 2400px;
+  margin: 0 auto;
+}
+
+.section-heading {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.section-title {
+  margin: 0 0 1rem;
+  color: var(--color-white);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.section-description {
+  max-width: 42rem;
+  margin: 0 auto;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
