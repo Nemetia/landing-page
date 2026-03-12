@@ -50,7 +50,7 @@ export const es: Translations = {
     sectionTitle: 'Raíces profundas, alcance global',
     sectionDescription:
       'Aportamos una visión sólida y cuidada a la tecnología moderna, ayudando a que tu empresa crezca sobre una base estable. Nuestro enfoque no trata solo de código, sino de construir con sentido.',
-    statsValue: '15+',
+    statsValue: '10+',
     statsLabel: 'Años de experiencia',
     imageAlt: 'Luz del sol atravesando un bosque verde profundo',
     tailoredSolutions: {

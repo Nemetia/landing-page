@@ -55,6 +55,12 @@
   flex-shrink: 0;
 }
 
+.site-brand-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
 .site-brand-icon .material-symbols-outlined {
   font-size: 1.7rem;
   transition: font-size 0.28s ease;

@@ -47,9 +47,10 @@
   font-weight: 500;
 }
 
-.hero-badge-icon {
-  color: var(--color-primary);
-  font-size: 1.1rem;
+.hero-badge img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .hero-title {

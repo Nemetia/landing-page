@@ -50,7 +50,7 @@ export const en: Translations = {
     sectionTitle: 'Deep Roots, Global Reach',
     sectionDescription:
       "We bring centuries of wisdom to modern technology, ensuring your medium-sized enterprise has the stability to grow globally. Our approach isn't just about code; it's about cultivation.",
-    statsValue: '15+',
+    statsValue: '10+',
     statsLabel: 'Years Experience',
     imageAlt: 'Sunlight filtering through a deep green ancient forest',
     tailoredSolutions: {
