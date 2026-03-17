@@ -12,14 +12,13 @@ export const en: Translations = {
     changeLanguage: 'Español',
   },
   hero: {
-    badge: 'Digital wisdom for modern growth',
-    titlePrefix: 'Nemetia:',
-    titleHighlight: 'Growth',
-    titleSuffix: 'Through Knowledge',
+    title: 'Plant your idea',
+    subTitle: 'We’ll help it',
+    titleHighlight: 'grow',
     description:
-      'Custom digital solutions for medium-sized enterprises, rooted in Celtic wisdom and modern tech.',
-    primaryCta: 'Contact us',
-    secondaryCta: 'View services',
+      'We turn your vision into digital solutions designed to deliver real, sustainable results.',
+    primaryCta: 'Grove with us',
+    secondaryCta: 'How we work',
     scrollIndicatorLabel: 'Scroll',
   },
   services: {

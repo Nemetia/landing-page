@@ -1,16 +1,29 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  min-width: 320px;
   font-family: "Inter", sans-serif;
   background-color: var(--color-background-dark);
   color: var(--color-text);
+  -webkit-text-size-adjust: 100%;
+}
+
+img,
+picture,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
 }
 
 a {
@@ -20,8 +33,17 @@ a {
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
+}
+
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
 }
 
 .material-symbols-outlined {

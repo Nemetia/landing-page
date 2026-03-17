@@ -12,14 +12,13 @@ export const es: Translations = {
     changeLanguage: 'English',
   },
   hero: {
-    badge: 'Sabiduría digital para el crecimiento moderno',
-    titlePrefix: 'Nemetia:',
-    titleHighlight: 'Crecimiento',
-    titleSuffix: 'a través del conocimiento',
+    title: 'Planta tu idea',
+    subTitle: 'Nosotros la hacemos',
+    titleHighlight: 'crecer',
     description:
-      'Soluciones digitales a medida para empresas medianas, inspiradas en la sabiduría celta y la tecnología moderna.',
-    primaryCta: 'Contáctanos',
-    secondaryCta: 'Ver servicios',
+      'Convertimos tu visión en soluciones digitales diseñadas para generar resultados reales y sostenibles.',
+    primaryCta: 'Unete al bosque',
+    secondaryCta: 'Cómo trabajamos',
     scrollIndicatorLabel: 'Desplázate',
   },
   services: {

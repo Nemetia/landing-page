@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   min-height: 85vh;
+  min-height: 85svh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -51,6 +52,10 @@
   width: 32px;
   height: 32px;
   object-fit: contain;
+}
+
+.badge-mobile {
+  display: none;
 }
 
 .hero-title {
@@ -108,13 +113,112 @@
   font-size: 2rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .hero-section {
-    min-height: 78vh;
-    padding: 4.5rem 1rem;
+    min-height: 74svh;
+    min-height: 74vh;
+    padding: 3.5rem 1rem 4.5rem;
+  }
+
+  .hero-badge {
+    margin-bottom: 1.35rem;
+  }
+
+  .hero-title {
+    max-width: 16ch;
+    font-size: clamp(2.5rem, 10vw, 4rem);
   }
 
   .hero-description {
+    max-width: 32rem;
+    margin-top: 1.35rem;
     font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .hero-actions {
+    width: 100%;
+    max-width: 26rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  .hero-primary-button,
+  .hero-secondary-button {
+    width: 100%;
+  }
+
+  .hero-scroll-indicator {
+    bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 3rem 1rem 4rem;
+  }
+
+  .hero-badge {
+    max-width: 16.5rem;
+    border-radius: 9999px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.82rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-badge img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .badge-desktop {
+    display: none;
+  }
+
+  .badge-mobile {
+    display: inline;
+  }
+
+  .hero-title {
+    font-size: clamp(2.75rem, 10vw, 3.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-description {
+    max-width: 19rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .hero-primary-button,
+  .hero-secondary-button {
+    min-height: 3.35rem;
+    padding: 0 1.1rem;
+    font-size: 1rem;
+    border-radius: 0.8rem;
+  }
+
+  .hero-scroll-indicator {
+    bottom: 2rem;
+    opacity: 0.75;
+  }
+
+  .hero-scroll-indicator .material-symbols-outlined {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-title {
+    font-size: clamp(2.4rem, 9.6vw, 3.1rem);
+  }
+
+  .hero-description {
+    max-width: 18rem;
+    font-size: 0.98rem;
   }
 }

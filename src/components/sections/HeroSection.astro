@@ -12,25 +12,22 @@ const { translations } = Astro.props
   <div class="hero-overlay"></div>
 
   <div class="container hero-section-content">
-    <div class="hero-badge">
-      <img
-        src={`${import.meta.env.BASE_URL}images/nemetia-wisdom-icon.png`}
-        alt="Nemetia wisdom"
-      />
-      <span>{translations.hero.badge}</span>
-    </div>
-
     <h1 class="hero-title">
-      <span class="hero-title-line">
+      <!-- <span class="hero-title-line">
         {translations.hero.titlePrefix}
         <span class="hero-title-highlight">
           {translations.hero.titleHighlight}
         </span>
+      </span> -->
+
+      <span class="hero-title-line">{translations.hero.title}</span>
+      <span class="hero-title-line">
+        {translations.hero.subTitle} <span class="hero-title-highlight">{translations.hero.titleHighlight}</span>
       </span>
 
-      <span class="hero-title-line">
+      <!-- <span class="hero-title-line">
         {translations.hero.titleSuffix}
-      </span>
+      </span> -->
     </h1>
 
     <p class="hero-description">

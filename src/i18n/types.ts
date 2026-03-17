@@ -10,10 +10,9 @@ export interface Translations {
     changeLanguage: string
   }
   hero: {
-    badge: string
-    titlePrefix: string
+    title: string
+    subTitle: string
     titleHighlight: string
-    titleSuffix: string
     description: string
     primaryCta: string
     secondaryCta: string
