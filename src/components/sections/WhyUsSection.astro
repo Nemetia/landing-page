@@ -9,14 +9,17 @@ const { translations } = Astro.props
 
 const whyUsHighlights = [
   {
+    mark: "i",
     title: translations.whyUs.tailoredSolutions.title,
     description: translations.whyUs.tailoredSolutions.description,
   },
   {
+    mark: "ii",
     title: translations.whyUs.sustainableGrowth.title,
     description: translations.whyUs.sustainableGrowth.description,
   },
   {
+    mark: "iii",
     title: translations.whyUs.closeSupport.title,
     description: translations.whyUs.closeSupport.description,
   },
@@ -24,33 +27,23 @@ const whyUsHighlights = [
 ---
 
 <section id="why-us" class="why-us-section">
-  <div class="container why-us-container">
+  <div class="container">
     <div class="why-us-layout">
-      <div class="why-us-content">
-        <h2 class="why-us-title">
-          {translations.whyUs.sectionTitle}
-        </h2>
-
-        <p class="why-us-description">
+      <div>
+        <p class="t-eyebrow">{translations.nav.whyUs}</p>
+        <h2 class="section-title" set:html={translations.whyUs.sectionTitle}></h2>
+        <p class="section-desc">
           {translations.whyUs.sectionDescription}
         </p>
 
         <div class="why-us-highlights">
           {
-            whyUsHighlights.map((whyUsHighlight) => (
+            whyUsHighlights.map((highlight) => (
               <div class="why-us-highlight">
-                <span class="material-symbols-outlined why-us-highlight-icon">
-                  check_circle
-                </span>
-
-                <div class="why-us-highlight-content">
-                  <h3 class="why-us-highlight-title">
-                    {whyUsHighlight.title}
-                  </h3>
-
-                  <p class="why-us-highlight-description">
-                    {whyUsHighlight.description}
-                  </p>
+                <div class="why-us-highlight-mark">{highlight.mark}</div>
+                <div>
+                  <h3 class="why-us-highlight-title">{highlight.title}</h3>
+                  <p class="why-us-highlight-desc">{highlight.description}</p>
                 </div>
               </div>
             ))
@@ -58,26 +51,26 @@ const whyUsHighlights = [
         </div>
       </div>
 
-      <div class="why-us-visual">
-        <div class="why-us-image-frame">
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKBJ6E7Z0vQARF0TjhDWgqnCBw3rBPdNmVFtOtHPKx2ZygKSUEuv1MdLjlSovqetdqQ0JkcFuiCsXHL7nqFjF1WMZuEpr8Kuvv-YSH15jQAS6gL8TL5nqUFpFOTkK2QK5TZLzn5sSCHm09y5p5lziQ363hHIU47V9mI9qe40i6DNiV69gdoDl6AMta3YspTa3Xk7yWSAnjbxhnm3bC0BKnkPo7adEOTvIFqwmM09OpoCLFolS8dXU83V85-thD8bCi7QPGg8YWrhPT"
-            alt={translations.whyUs.imageAlt}
-            class="why-us-image"
-          />
-          <div class="why-us-image-overlay"></div>
-        </div>
-
-        <div class="why-us-stats-card">
-          <div class="why-us-stats-content">
-            <span class="why-us-stats-value">
-              {translations.whyUs.statsValue}
-            </span>
-
-            <span class="why-us-stats-label">
-              {translations.whyUs.statsLabel}
-            </span>
-          </div>
+      <div class="rings-wrap">
+        <svg viewBox="0 0 480 480" fill="none" aria-hidden="true">
+          <circle cx="240" cy="240" r="220" stroke="#11d432" stroke-opacity="0.08" stroke-width="1.5" />
+          <circle cx="240" cy="240" r="200" stroke="#11d432" stroke-opacity="0.14" stroke-width="1.5" />
+          <circle cx="240" cy="240" r="178" stroke="#11d432" stroke-opacity="0.2" stroke-width="1.5" />
+          <circle cx="240" cy="240" r="155" stroke="#11d432" stroke-opacity="0.28" stroke-width="1.5" />
+          <circle cx="240" cy="240" r="132" stroke="#11d432" stroke-opacity="0.36" stroke-width="1.5" />
+          <circle cx="240" cy="240" r="108" stroke="#11d432" stroke-opacity="0.46" stroke-width="2" />
+          <circle cx="240" cy="240" r="84" stroke="#11d432" stroke-opacity="0.58" stroke-width="2" />
+          <circle cx="240" cy="240" r="60" stroke="#11d432" stroke-opacity="0.72" stroke-width="2.5" />
+          <circle cx="240" cy="240" r="38" stroke="#11d432" stroke-opacity="0.88" stroke-width="2.5" />
+          <circle cx="240" cy="240" r="20" fill="#11d432" />
+          <path d="M240 20 L240 218" stroke="#11d432" stroke-opacity="0.06" />
+          <path d="M240 262 L240 460" stroke="#11d432" stroke-opacity="0.06" />
+          <path d="M20 240 L218 240" stroke="#11d432" stroke-opacity="0.06" />
+          <path d="M262 240 L460 240" stroke="#11d432" stroke-opacity="0.06" />
+        </svg>
+        <div class="rings-center">
+          <div class="rings-num">{translations.whyUs.statsValue}</div>
+          <div class="rings-lbl">{translations.whyUs.statsLabel}</div>
         </div>
       </div>
     </div>

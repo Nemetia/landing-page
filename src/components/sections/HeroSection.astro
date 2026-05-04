@@ -1,5 +1,6 @@
 ---
 import type { Translations } from "../../i18n/types"
+import HeroTree from "../visuals/HeroTree.astro"
 
 interface Props {
   translations: Translations
@@ -8,44 +9,82 @@ interface Props {
 const { translations } = Astro.props
 ---
 
-<section id="home" class="hero-section hero-gradient">
-  <div class="hero-overlay"></div>
+<section id="home" class="hero" data-hero>
+  <div class="hero-bg"></div>
+  <div class="hero-grid-bg"></div>
 
-  <div class="container hero-section-content">
-    <h1 class="hero-title">
-      <!-- <span class="hero-title-line">
-        {translations.hero.titlePrefix}
-        <span class="hero-title-highlight">
-          {translations.hero.titleHighlight}
-        </span>
-      </span> -->
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span>{translations.hero.badge}</span>
+      </div>
 
-      <span class="hero-title-line">{translations.hero.title}</span>
-      <span class="hero-title-line">
-        {translations.hero.subTitle} <span class="hero-title-highlight">{translations.hero.titleHighlight}</span>
-      </span>
+      <h1 class="hero-title">
+        {translations.hero.title}<br />
+        {translations.hero.subTitle} <em>{translations.hero.titleHighlight}</em>.
+      </h1>
 
-      <!-- <span class="hero-title-line">
-        {translations.hero.titleSuffix}
-      </span> -->
-    </h1>
+      <p class="hero-desc">
+        {translations.hero.description}
+      </p>
 
-    <p class="hero-description">
-      {translations.hero.description}
-    </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">
+          {translations.hero.primaryCta}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 8 L13 8 M9 4 L13 8 L9 12" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="#services" class="btn btn-ghost">{translations.hero.secondaryCta}</a>
+      </div>
 
-    <div class="hero-actions">
-      <a href="#contact" class="button button-primary hero-primary-button">
-        {translations.hero.primaryCta}
-      </a>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="meta-num">{translations.hero.meta.years.value}</div>
+          <span class="meta-lbl">{translations.hero.meta.years.label}</span>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-num">{translations.hero.meta.projects.value}</div>
+          <span class="meta-lbl">{translations.hero.meta.projects.label}</span>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-num">{translations.hero.meta.sectors.value}</div>
+          <span class="meta-lbl">{translations.hero.meta.sectors.label}</span>
+        </div>
+      </div>
+    </div>
 
-      <a href="#services" class="button button-secondary hero-secondary-button">
-        {translations.hero.secondaryCta}
-      </a>
+    <div class="hero-tree-container">
+      <div class="hero-tree-glow"></div>
+      <HeroTree />
     </div>
   </div>
-
-  <div class="hero-scroll-indicator" aria-hidden="true">
-    <span class="material-symbols-outlined">expand_more</span>
-  </div>
 </section>
+
+<script is:inline>
+  (() => {
+    const init = () => {
+      const hero = document.querySelector("[data-hero]");
+      if (!(hero instanceof HTMLElement)) return;
+      const tree = hero.querySelector("[data-hero-tree]");
+      if (!(tree instanceof SVGElement)) return;
+
+      const onScroll = () => {
+        const { bottom } = hero.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, 1 - bottom / window.innerHeight));
+        tree.style.setProperty("--scroll-progress", String(progress));
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      onScroll();
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init, { once: true });
+    } else {
+      init();
+    }
+  })();
+</script>

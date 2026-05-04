@@ -6,67 +6,72 @@ interface Props {
 }
 
 const { translations } = Astro.props
-
-const serviceCards = [
-  {
-    title: translations.services.software.title,
-    description: translations.services.software.description,
-    icon: translations.services.software.icon,
-  },
-  {
-    title: translations.services.strategy.title,
-    description: translations.services.strategy.description,
-    icon: translations.services.strategy.icon,
-  },
-  {
-    title: translations.services.infrastructure.title,
-    description: translations.services.infrastructure.description,
-    icon: translations.services.infrastructure.icon,
-  },
-]
 ---
 
-<section id="services" class="services-section">
-  <div class="container-wide services-container">
+<section id="services" class="services-section section-mid">
+  <div class="container">
     <div class="section-heading">
-      <h2 class="section-title">
-        {translations.services.sectionTitle}
-      </h2>
-
-      <p class="section-description">
+      <p class="t-eyebrow">{translations.nav.services}</p>
+      <h2 class="section-title" set:html={translations.services.sectionTitle}></h2>
+      <p class="section-desc">
         {translations.services.sectionDescription}
       </p>
     </div>
 
     <div class="services-grid">
-      {
-        serviceCards.map((serviceCard) => (
-          <article class="service-card glow-border">
-            <div class="service-card-icon-wrapper">
-              <span class="material-symbols-outlined service-card-icon">
-                {serviceCard.icon}
-              </span>
-            </div>
+      <article class="service-card">
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M12 1 L12 6 M12 18 L12 23 M4.2 4.2 L7.8 7.8 M16.2 16.2 L19.8 19.8 M1 12 L6 12 M18 12 L23 12 M4.2 19.8 L7.8 16.2 M16.2 7.8 L19.8 4.2" />
+          </svg>
+        </div>
+        <h3 class="service-title" set:html={translations.services.software.title}></h3>
+        <p class="service-desc">{translations.services.software.description}</p>
+        <a href="#contact" class="service-link">
+          {translations.services.learnMore}
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 8 L13 8 M9 4 L13 8 L9 12" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </article>
 
-            <div class="service-card-content">
-              <h3 class="service-card-title">
-                {serviceCard.title}
-              </h3>
+      <article class="service-card">
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 21h6 M12 17v4 M5 9a7 7 0 1 1 14 0c0 3-2 5-2 7H7c0-2-2-4-2-7z" />
+            <path d="M9 12h6 M10 9l4 4 M14 9l-4 4" stroke-opacity="0.5" />
+          </svg>
+        </div>
+        <h3 class="service-title" set:html={translations.services.strategy.title}></h3>
+        <p class="service-desc">{translations.services.strategy.description}</p>
+        <a href="#contact" class="service-link">
+          {translations.services.learnMore}
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 8 L13 8 M9 4 L13 8 L9 12" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </article>
 
-              <p class="service-card-description">
-                {serviceCard.description}
-              </p>
-            </div>
-
-            <a class="service-card-link" href="#">
-              {translations.services.learnMore}
-              <span class="material-symbols-outlined service-card-link-icon">
-                arrow_forward
-              </span>
-            </a>
-          </article>
-        ))
-      }
+      <article class="service-card">
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="4" r="2" />
+            <circle cx="6" cy="14" r="2" />
+            <circle cx="18" cy="14" r="2" />
+            <circle cx="12" cy="20" r="2" />
+            <path d="M12 6 L12 10 M12 10 L6 12 M12 10 L18 12 M6 16 L12 18 M18 16 L12 18" />
+          </svg>
+        </div>
+        <h3 class="service-title" set:html={translations.services.infrastructure.title}></h3>
+        <p class="service-desc">{translations.services.infrastructure.description}</p>
+        <a href="#contact" class="service-link">
+          {translations.services.learnMore}
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 8 L13 8 M9 4 L13 8 L9 12" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </article>
     </div>
   </div>
 </section>

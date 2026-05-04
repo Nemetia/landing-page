@@ -1,0 +1,76 @@
+---
+interface Props {
+  variant: "seed" | "sprout" | "growth" | "forest"
+}
+
+const { variant } = Astro.props
+---
+
+{
+  variant === "seed" && (
+    <svg viewBox="0 0 100 100" fill="none" stroke="#11d432" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M15 75 L85 75" stroke-opacity="0.4" stroke-dasharray="3 4" />
+      <ellipse cx="50" cy="60" rx="14" ry="18" fill="#11d432" fill-opacity="0.18" />
+      <ellipse cx="50" cy="60" rx="14" ry="18" />
+      <path d="M50 44 Q48 60 50 76" stroke-opacity="0.6" />
+      <path d="M50 76 L50 82" stroke-opacity="0.5" />
+      <circle cx="50" cy="86" r="1.5" fill="#11d432" />
+    </svg>
+  )
+}
+
+{
+  variant === "sprout" && (
+    <svg viewBox="0 0 100 100" fill="none" stroke="#11d432" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M15 75 L85 75" stroke-opacity="0.4" stroke-dasharray="3 4" />
+      <path d="M50 75 Q50 60 50 45" stroke-width="3" />
+      <path d="M50 55 Q35 50 28 38 Q42 38 50 50" fill="#11d432" fill-opacity="0.2" />
+      <path d="M50 50 Q65 45 72 33 Q58 33 50 45" fill="#11d432" fill-opacity="0.25" />
+      <path d="M50 75 Q50 80 45 84" stroke-opacity="0.5" />
+      <path d="M50 75 Q50 80 55 84" stroke-opacity="0.5" />
+      <circle cx="45" cy="84" r="1.5" fill="#11d432" />
+      <circle cx="55" cy="84" r="1.5" fill="#11d432" />
+    </svg>
+  )
+}
+
+{
+  variant === "growth" && (
+    <svg viewBox="0 0 100 100" fill="none" stroke="#11d432" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M15 80 L85 80" stroke-opacity="0.4" stroke-dasharray="3 4" />
+      <path d="M50 80 L50 50" stroke-width="3.5" />
+      <path d="M50 60 Q42 52 32 48" />
+      <path d="M50 55 Q58 48 68 44" />
+      <path d="M50 50 Q50 42 50 32" />
+      <circle cx="30" cy="46" r="6" fill="#11d432" fill-opacity="0.3" />
+      <circle cx="70" cy="42" r="7" fill="#11d432" fill-opacity="0.3" />
+      <circle cx="50" cy="28" r="8" fill="#11d432" fill-opacity="0.35" />
+      <path d="M50 80 L40 84 L40 88" stroke-opacity="0.6" />
+      <path d="M50 80 L60 84 L60 88" stroke-opacity="0.6" />
+      <circle cx="40" cy="88" r="1.8" fill="#11d432" />
+      <circle cx="60" cy="88" r="1.8" fill="#11d432" />
+    </svg>
+  )
+}
+
+{
+  variant === "forest" && (
+    <svg viewBox="0 0 100 100" fill="none" stroke="#11d432" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M10 82 L90 82" stroke-opacity="0.4" stroke-dasharray="3 4" />
+      <path d="M50 82 L50 52" stroke-width="3" />
+      <path d="M50 60 Q42 55 36 50" />
+      <path d="M50 58 Q58 52 64 48" />
+      <circle cx="50" cy="42" r="11" fill="#11d432" fill-opacity="0.3" />
+      <path d="M22 82 L22 65" stroke-width="2" />
+      <circle cx="22" cy="58" r="7" fill="#11d432" fill-opacity="0.25" />
+      <path d="M78 82 L78 65" stroke-width="2" />
+      <circle cx="78" cy="58" r="7" fill="#11d432" fill-opacity="0.25" />
+      <path d="M68 82 L68 72" stroke-width="1.5" />
+      <circle cx="68" cy="68" r="4" fill="#11d432" fill-opacity="0.2" />
+      <path d="M32 82 L32 72" stroke-width="1.5" />
+      <circle cx="32" cy="68" r="4" fill="#11d432" fill-opacity="0.2" />
+      <path d="M22 82 Q35 90 50 90 Q65 90 78 82" stroke-opacity="0.4" />
+      <circle cx="50" cy="90" r="1.5" fill="#11d432" />
+    </svg>
+  )
+}
