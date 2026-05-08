@@ -8,68 +8,55 @@ interface Props {
 const { translations } = Astro.props
 ---
 
-<section id="contact" class="contact-section">
-  <div class="contact-background-texture"></div>
-
-  <div class="container contact-container">
-    <div class="contact-heading">
-      <h2 class="contact-title">
-        {translations.contact.sectionTitle}
-      </h2>
-
-      <p class="contact-description">
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-heading contact-heading">
+      <p class="t-eyebrow contact-eyebrow">{translations.nav.contact}</p>
+      <h2 class="section-title" set:html={translations.contact.sectionTitle}></h2>
+      <p class="section-desc contact-desc">
         {translations.contact.sectionDescription}
       </p>
     </div>
 
-    <form class="contact-form-card">
+    <form class="contact-card">
       <div class="contact-form-grid">
-        <div class="contact-form-field">
-          <label for="name" class="contact-form-label">
-            {translations.contact.nameLabel}
-          </label>
-
+        <div class="field">
+          <label for="name">{translations.contact.nameLabel}</label>
           <input
             id="name"
             name="name"
             type="text"
-            class="contact-form-input"
             placeholder={translations.contact.namePlaceholder}
           />
         </div>
-
-        <div class="contact-form-field">
-          <label for="email" class="contact-form-label">
-            {translations.contact.emailLabel}
-          </label>
-
+        <div class="field">
+          <label for="email">{translations.contact.emailLabel}</label>
           <input
             id="email"
             name="email"
             type="email"
-            class="contact-form-input"
             placeholder={translations.contact.emailPlaceholder}
           />
         </div>
       </div>
 
-      <div class="contact-form-field">
-        <label for="message" class="contact-form-label">
-          {translations.contact.messageLabel}
-        </label>
-
+      <div class="field">
+        <label for="message">{translations.contact.messageLabel}</label>
         <textarea
           id="message"
           name="message"
-          class="contact-form-textarea"
           placeholder={translations.contact.messagePlaceholder}
-          rows="4"
         ></textarea>
       </div>
 
-      <button type="button" class="button button-primary contact-submit-button">
-        {translations.contact.submitText}
-      </button>
+      <div class="contact-submit">
+        <button type="button" class="btn btn-primary">
+          {translations.contact.submitText}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 8 L13 8 M9 4 L13 8 L9 12" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
     </form>
   </div>
 </section>

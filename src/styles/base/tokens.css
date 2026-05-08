@@ -1,7 +1,11 @@
 :root {
+  /* Brand colors */
   --color-primary: #11d432;
+  --color-primary-soft: #4ade80;
+  --color-primary-glow: rgba(17, 212, 50, 0.4);
   --color-background-light: #f6f8f6;
   --color-background-dark: #0a1f1c;
+  --color-background-darker: #061714;
   --color-forest-muted: #162d29;
   --color-forest-accent: #1a3d38;
 
@@ -9,4 +13,22 @@
   --color-text: #f1f5f9;
   --color-muted: #94a3b8;
   --color-muted-soft: #cbd5e1;
+
+  /* Nemetia hi-fi aliases (shorter names used in new components) */
+  --c-primary: var(--color-primary);
+  --c-primary-soft: var(--color-primary-soft);
+  --c-primary-glow: var(--color-primary-glow);
+  --c-bg-dark: var(--color-background-dark);
+  --c-bg-darker: var(--color-background-darker);
+  --c-forest-muted: var(--color-forest-muted);
+  --c-forest-accent: var(--color-forest-accent);
+  --c-white: var(--color-white);
+  --c-text: var(--color-text);
+  --c-muted: var(--color-muted);
+  --c-muted-soft: var(--color-muted-soft);
+
+  /* Type families */
+  --font-display: "Fraunces", "Times New Roman", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }

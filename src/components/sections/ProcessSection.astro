@@ -1,0 +1,46 @@
+---
+import type { Translations } from "../../i18n/types"
+import ProcessIcons from "../visuals/ProcessIcons.astro"
+
+interface Props {
+  translations: Translations
+}
+
+const { translations } = Astro.props
+
+const variants = ["seed", "sprout", "growth", "forest"] as const
+---
+
+<section id="process" class="process-section">
+  <div class="container">
+    <div class="section-heading process-heading">
+      <p class="t-eyebrow process-eyebrow">{translations.process.eyebrow}</p>
+      <h2 class="section-title" set:html={translations.process.sectionTitle}></h2>
+      <p class="section-desc process-desc">
+        {translations.process.sectionDescription}
+      </p>
+    </div>
+
+    <div class="process-track">
+      <div class="process-trunk"></div>
+      <div class="process-grid">
+        {
+          translations.process.phases.map((phase, index) => (
+            <div class="process-step">
+              <div class="process-illus">
+                <ProcessIcons variant={variants[index]} />
+              </div>
+              <p class="process-stage">{phase.stage}</p>
+              <h3 class="process-title">{phase.title}</h3>
+              <ul class="process-bullets">
+                {phase.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,113 @@
+---
+// Mixed-variant animated SVG tree (organic branches + circuit roots).
+// Leaf opacity reacts to a CSS custom property `--scroll-progress` (0..1)
+// set on the [data-hero-tree] element by the Hero scroll script.
+---
+
+<svg
+  class="hero-tree"
+  data-hero-tree
+  viewBox="0 0 560 560"
+  fill="none"
+  stroke="#11d432"
+  stroke-width="2.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <defs>
+    <radialGradient id="leafGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#11d432" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#11d432" stop-opacity="0.05" />
+    </radialGradient>
+    <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#11d432" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#11d432" stop-opacity="0.5" />
+    </linearGradient>
+    <filter id="treeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g class="tree-breathe">
+    {/* Main organic branches */}
+    <path class="tree-stroke delay-1" d="M280 380 Q260 340 230 290 Q200 240 170 200 Q150 175 130 160" stroke="url(#trunkGrad)" stroke-width="3" />
+    <path class="tree-stroke delay-1" d="M280 380 Q300 340 330 290 Q360 240 390 200 Q410 175 430 160" stroke="url(#trunkGrad)" stroke-width="3" />
+    <path class="tree-stroke delay-2" d="M280 350 Q280 300 280 240 Q280 200 280 160" stroke="url(#trunkGrad)" stroke-width="2.5" />
+
+    {/* Sub branches */}
+    <path class="tree-stroke delay-2" d="M170 200 Q150 190 120 195 Q105 198 95 210" />
+    <path class="tree-stroke delay-2" d="M170 200 Q175 175 165 145" />
+    <path class="tree-stroke delay-2" d="M390 200 Q410 190 440 195 Q455 198 465 210" />
+    <path class="tree-stroke delay-2" d="M390 200 Q385 175 395 145" />
+    <path class="tree-stroke delay-3" d="M280 240 Q260 225 240 220" />
+    <path class="tree-stroke delay-3" d="M280 240 Q300 225 320 220" />
+
+    {/* Base leaves cluster (always visible) */}
+    <g class="tree-leaves-base">
+      <g class="tree-leaf" style="animation-delay: 1.4s;">
+        <circle cx="125" cy="160" r="42" fill="url(#leafGrad)" />
+        <circle cx="125" cy="160" r="42" stroke="#11d432" stroke-opacity="0.6" />
+      </g>
+      <g class="tree-leaf" style="animation-delay: 1.5s;">
+        <circle cx="280" cy="140" r="56" fill="url(#leafGrad)" />
+        <circle cx="280" cy="140" r="56" stroke="#11d432" stroke-opacity="0.7" />
+      </g>
+      <g class="tree-leaf" style="animation-delay: 1.6s;">
+        <circle cx="435" cy="160" r="42" fill="url(#leafGrad)" />
+        <circle cx="435" cy="160" r="42" stroke="#11d432" stroke-opacity="0.6" />
+      </g>
+    </g>
+
+    {/* Extra leaves (scroll progress > 0.2) */}
+    <g class="tree-leaves-extra">
+      <circle cx="160" cy="140" r="20" fill="url(#leafGrad)" stroke="#11d432" stroke-opacity="0.5" />
+      <circle cx="395" cy="140" r="20" fill="url(#leafGrad)" stroke="#11d432" stroke-opacity="0.5" />
+      <circle cx="240" cy="220" r="14" fill="url(#leafGrad)" stroke="#11d432" stroke-opacity="0.5" />
+      <circle cx="320" cy="220" r="14" fill="url(#leafGrad)" stroke="#11d432" stroke-opacity="0.5" />
+    </g>
+
+    {/* Full canopy accents (scroll progress > 0.5) */}
+    <g class="tree-leaves-full">
+      <circle cx="100" cy="195" r="10" fill="#11d432" fill-opacity="0.4" />
+      <circle cx="460" cy="195" r="10" fill="#11d432" fill-opacity="0.4" />
+      <circle cx="200" cy="120" r="8" fill="#11d432" fill-opacity="0.5" />
+      <circle cx="360" cy="120" r="8" fill="#11d432" fill-opacity="0.5" />
+    </g>
+
+    {/* Trunk */}
+    <path class="tree-stroke" d="M280 460 L280 380" stroke="url(#trunkGrad)" stroke-width="6" />
+
+    {/* Circuit roots */}
+    <g>
+      <path class="tree-stroke delay-3" d="M280 460 L280 480 L180 480 L180 510" />
+      <path class="tree-stroke delay-3" d="M280 460 L280 490 L380 490 L380 520" />
+      <path class="tree-stroke delay-3" d="M280 460 L120 460 L120 490" />
+      <path class="tree-stroke delay-3" d="M280 460 L440 460 L440 490" />
+      <path class="tree-stroke delay-4" d="M180 510 L80 510 L80 530" />
+      <path class="tree-stroke delay-4" d="M380 520 L480 520 L480 540" />
+      <path class="tree-stroke delay-4" d="M280 480 L280 540" />
+
+      {/* Animated data flow */}
+      <path class="circuit-flow" d="M280 460 L280 480 L180 480 L180 510" stroke="#11d432" stroke-width="1" stroke-opacity="0.8" fill="none" />
+      <path class="circuit-flow" d="M280 460 L280 490 L380 490 L380 520" stroke="#11d432" stroke-width="1" stroke-opacity="0.8" fill="none" />
+
+      {/* Root nodes */}
+      <circle class="tree-node pulse" style="animation-delay: 1.5s;" cx="120" cy="490" r="5" fill="#11d432" filter="url(#treeGlow)" />
+      <circle class="tree-node pulse" style="animation-delay: 1.7s;" cx="180" cy="510" r="5" fill="#11d432" filter="url(#treeGlow)" />
+      <circle class="tree-node pulse" style="animation-delay: 1.9s;" cx="280" cy="540" r="6" fill="#11d432" filter="url(#treeGlow)" />
+      <circle class="tree-node pulse" style="animation-delay: 2.1s;" cx="380" cy="520" r="5" fill="#11d432" filter="url(#treeGlow)" />
+      <circle class="tree-node pulse" style="animation-delay: 2.3s;" cx="440" cy="490" r="5" fill="#11d432" filter="url(#treeGlow)" />
+      <circle class="tree-node pulse" style="animation-delay: 2.5s;" cx="80" cy="530" r="4" fill="#11d432" filter="url(#treeGlow)" />
+      <circle class="tree-node pulse" style="animation-delay: 2.7s;" cx="480" cy="540" r="4" fill="#11d432" filter="url(#treeGlow)" />
+
+      {/* Small connector marks */}
+      <rect class="tree-node" style="animation-delay: 2.0s;" x="225" y="475" width="6" height="6" fill="#11d432" fill-opacity="0.6" />
+      <rect class="tree-node" style="animation-delay: 2.1s;" x="325" y="485" width="6" height="6" fill="#11d432" fill-opacity="0.6" />
+    </g>
+  </g>
+</svg>

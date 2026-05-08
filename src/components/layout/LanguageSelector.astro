@@ -20,28 +20,33 @@ const selectorId = "language-selector-menu"
 <div class="language-selector" data-language-selector>
   <button
     type="button"
-    class="language-selector-trigger"
+    class="lang-switch"
     aria-haspopup="true"
     aria-expanded="false"
     aria-controls={selectorId}
     data-language-selector-trigger
   >
-    <span class="material-symbols-outlined language-selector-trigger-icon">
-      language
-    </span>
+    <span>{currentLanguageOption.shortLabel}</span>
 
-    <span class="language-selector-trigger-label">
-      {currentLanguageOption.shortLabel}
-    </span>
-
-    <span class="material-symbols-outlined language-selector-trigger-chevron">
-      expand_more
-    </span>
+    <svg
+      class="lang-switch-chevron"
+      width="10"
+      height="10"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M4 6 L8 10 L12 6" />
+    </svg>
   </button>
 
   <div
     id={selectorId}
-    class="language-selector-menu"
+    class="lang-menu"
     hidden
     data-language-selector-menu
   >
@@ -52,18 +57,26 @@ const selectorId = "language-selector-menu"
         return (
           <a
             href={languageOption.path}
-            class={`language-selector-option ${isCurrentLanguage ? "language-selector-option--active" : ""}`}
+            class={`lang-menu-option ${isCurrentLanguage ? "lang-menu-option--active" : ""}`}
             lang={languageOption.code}
           >
-            <span class="language-selector-option-label">
-              {languageOption.label}
-            </span>
+            <span>{languageOption.label}</span>
 
             {
               isCurrentLanguage && (
-                <span class="material-symbols-outlined language-selector-option-check">
-                  check
-                </span>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 8 L7 12 L13 4" />
+                </svg>
               )
             }
           </a>

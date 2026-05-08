@@ -9,31 +9,21 @@ const { translations } = Astro.props
 ---
 
 <footer class="site-footer">
-  <div class="container site-footer-content">
-    <div class="site-footer-brand">
+  <div class="container footer-inner">
+    <div class="brand footer-brand">
       <img
         src={`${import.meta.env.BASE_URL}images/nemetia-footer-logo.png`}
-        alt="Nemetia footer"
+        alt=""
       />
-      <span class="site-footer-brand-name">Nemetia Digital Solutions</span>
+      <span class="brand-name footer-brand-name">Nemetia</span>
     </div>
 
-    <nav class="site-footer-links" aria-label="Footer navigation">
-      <a href="#" class="site-footer-link">
-        {translations.footer.privacyPolicy}
-      </a>
+    <ul class="footer-links">
+      <li><a href="#">{translations.footer.privacyPolicy}</a></li>
+      <li><a href="#">{translations.footer.termsAndConditions}</a></li>
+      <li><a href="#">{translations.footer.socialLink}</a></li>
+    </ul>
 
-      <a href="#" class="site-footer-link">
-        {translations.footer.termsAndConditions}
-      </a>
-
-      <a href="#" class="site-footer-link">
-        {translations.footer.socialLink}
-      </a>
-    </nav>
-
-    <p class="site-footer-copyright">
-      {translations.footer.copyright}
-    </p>
+    <div class="footer-copy">{translations.footer.copyright}</div>
   </div>
 </footer>

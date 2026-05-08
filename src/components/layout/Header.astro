@@ -18,36 +18,33 @@ const homePath =
 ---
 
 <header class="site-header" data-site-header>
-  <div class="container site-header-content">
-    <div class="site-brand">
-      <div class="site-brand-icon">
-        <img
-          src={`${import.meta.env.BASE_URL}images/nemetia-header-logo.png`}
-          alt="Nemetia header"
-        />
-      </div>
+  <div class="container site-header-inner">
+    <a href={homePath} class="brand">
+      <img
+        src={`${import.meta.env.BASE_URL}images/nemetia-header-logo.png`}
+        alt=""
+      />
+      <span class="brand-name">Nemetia</span>
+    </a>
 
-      <a href={homePath} class="site-brand-name">
-        Nemetia Digital Solutions
-      </a>
-    </div>
-
-    <nav class="site-navigation" aria-label="Main navigation">
-      <a class="site-navigation-link" href="#home" data-section-link="home">
-        {translations.nav.home}
-      </a>
-
-      <a class="site-navigation-link" href="#services" data-section-link="services">
-        {translations.nav.services}
-      </a>
-
-      <a class="site-navigation-link" href="#why-us" data-section-link="why-us">
-        {translations.nav.whyUs}
-      </a>
-
-      <a class="site-navigation-link" href="#contact" data-section-link="contact">
-        {translations.nav.contact}
-      </a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li>
+          <a href="#home" data-section-link="home">{translations.nav.home}</a>
+        </li>
+        <li>
+          <a href="#services" data-section-link="services">{translations.nav.services}</a>
+        </li>
+        <li>
+          <a href="#why-us" data-section-link="why-us">{translations.nav.whyUs}</a>
+        </li>
+        <li>
+          <a href="#process" data-section-link="process">{translations.nav.process}</a>
+        </li>
+        <li>
+          <a href="#contact" data-section-link="contact">{translations.nav.contact}</a>
+        </li>
+      </ul>
     </nav>
 
     <LanguageSelector
@@ -76,7 +73,7 @@ const homePath =
       const setActiveSectionLink = (sectionId) => {
         sectionLinks.forEach((sectionLink) => {
           const isActive = sectionLink.dataset.sectionLink === sectionId;
-          sectionLink.classList.toggle("site-navigation-link--active", isActive);
+          sectionLink.classList.toggle("nav-link--active", isActive);
 
           if (isActive) {
             sectionLink.setAttribute("aria-current", "page");

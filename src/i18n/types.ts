@@ -6,6 +6,7 @@ export interface Translations {
     home: string
     services: string
     whyUs: string
+    process: string
     contact: string
     changeLanguage: string
   }
@@ -17,6 +18,12 @@ export interface Translations {
     primaryCta: string
     secondaryCta: string
     scrollIndicatorLabel: string
+    badge: string
+    meta: {
+      years: { value: string; label: string }
+      projects: { value: string; label: string }
+      sectors: { value: string; label: string }
+    }
   }
   services: {
     sectionTitle: string
@@ -56,6 +63,16 @@ export interface Translations {
       title: string
       description: string
     }
+  }
+  process: {
+    eyebrow: string
+    sectionTitle: string
+    sectionDescription: string
+    phases: Array<{
+      stage: string
+      title: string
+      bullets: string[]
+    }>
   }
   contact: {
     sectionTitle: string

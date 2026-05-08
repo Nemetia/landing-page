@@ -9,3 +9,34 @@
     transform: translateX(-50%) translateY(3px);
   }
 }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes drawTree {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes leafIn {
+  to { transform: scale(1); }
+}
+
+@keyframes nodeIn {
+  to { opacity: 1; }
+}
+
+@keyframes nodePulse {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(17, 212, 50, 0.4)); }
+  50% { filter: drop-shadow(0 0 8px rgba(17, 212, 50, 0.9)); }
+}
+
+@keyframes circuitFlow {
+  to { stroke-dashoffset: -36; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.012); }
+}
